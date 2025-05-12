@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <title>EcoBud - Sustentabilidade</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      background-color: #e6eef2;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding-bottom: 40px;
+    }
+
+    header {
+      width: 100%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      position: relative;
+      padding: 40px 0 20px;
+    }
+
+    .logo {
+      font-size: 80px;
+      font-weight: bold;
+      color: white;
+      text-shadow: 3px 3px 15px rgba(0, 0, 0, 0.3);
+    }
+
+    .logo span {
+      color: #4ce191;
+    }
+
+    .home-icon, .menu-icon {
+      position: absolute;
+      top: 40px;
+      width: 50px;
+      height: 50px;
+      cursor: pointer;
+    }
+
+    .home-icon {
+      left: 40px;
+    }
+
+    .menu-icon {
+      right: 40px;
+    }
+
+    nav {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 10px;
+      margin-bottom: 20px;
+      padding: 10px 20px;
+      border-bottom: 2px solid #4ce191;
+    }
+
+    nav button {
+      background-color: transparent;
+      border: none;
+      padding: 12px 20px;
+      font-size: 18px;
+      font-weight: bold;
+      color: #397065;
+      border-radius: 25px;
+      cursor: pointer;
+      transition: background-color 0.2s;
+    }
+
+    nav button.active {
+      background-color: #84f4a2;
+      color: white;
+    }
+
+    .content-section {
+      display: none;
+      max-width: 900px;
+      font-size: 22px;
+      line-height: 1.6;
+      padding: 20px;
+      background-color: #fff;
+      border-radius: 10px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    }
+
+    .content-section.active {
+      display: block;
+    }
+
+    @media (max-width: 768px) {
+      .logo {
+        font-size: 60px;
+      }
+
+      .home-icon, .menu-icon {
+        width: 40px;
+        top: 20px;
+      }
+
+      nav {
+        flex-direction: column;
+        align-items: center;
+      }
+
+      nav button {
+        width: 90%;
+        text-align: center;
+      }
+
+      .content-section {
+        font-size: 18px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <a href="home.html"><img src="imagens/home.png" alt="Home" class="home-icon"></a>
+    <div class="logo">ECO<span>BUD</span></div>
+    <img src="imagens/opcoes.png" alt="Menu" class="menu-icon">
+  </header>
+
+  <nav id="tabs">
+    <button class="active" data-target="sustentabilidade">O que é Sustentabilidade</button>
+    <button data-target="consumo">Consumo Consciente</button>
+    <button data-target="residuos">Gestão de Resíduos</button>
+    <button data-target="energia">Energia Sustentável</button>
+    <button data-target="mobilidade">Mobilidade Sustentável</button>
+    <button data-target="alimentacao">Alimentação Sustentável</button>
+    <button data-target="preservacao">Preservação Ambiental</button>
+    <button data-target="clima">Mudanças Climáticas</button>
+    <button data-target="urbana">Sustentabilidade Urbana</button>
+    <button data-target="digital">Sustentabilidade Digital</button>
+    <button data-target="justica">Justiça Social e Sustentabilidade</button>
+    <button data-target="politicas">Políticas Públicas e Leis Ambientais</button>
+    <button data-target="educacao">Educação Ambiental</button>
+  </nav>
+
+  <!-- CONTEÚDOS DAS ABAS -->
+  <main>
+    <div id="sustentabilidade" class="content-section active">
+      <h2>🌱 O que é Sustentabilidade</h2>
+      <p>Sustentabilidade é um conceito fundamental para garantir a sobrevivência do planeta e a qualidade de vida de todas as pessoas, hoje e no futuro. Ela representa a capacidade de suprirmos nossas necessidades atuais — como alimentação, moradia, transporte e energia — sem comprometer os recursos e as condições que as futuras gerações também precisarão. Ou seja, é encontrar um equilíbrio entre viver bem agora e garantir que o mundo continue habitável e saudável para quem virá depois.
+
+Mais do que uma definição, a sustentabilidade é uma forma de pensar, agir e se relacionar com o mundo. Ela exige consciência, responsabilidade e compromisso com o meio ambiente, com a sociedade e com a economia. Esses três pilares — ambiental, social e econômico — são interdependentes. Não é possível proteger a natureza sem combater a desigualdade social, nem crescer economicamente destruindo os recursos naturais.
+
+O pilar ambiental diz respeito à preservação da natureza. É preciso conservar florestas, rios, oceanos, solo fértil e a biodiversidade. Evitar a poluição, reduzir o desmatamento e as emissões de gases de efeito estufa também são práticas sustentáveis. Já o pilar social se preocupa com o bem-estar das pessoas. Ele envolve a garantia de direitos como saúde, educação, moradia e segurança, além de inclusão, equidade e participação cidadã. Por fim, o pilar econômico busca o desenvolvimento com responsabilidade, promovendo a geração de empregos dignos, o consumo consciente e a produção eficiente, sem desperdícios.
+
+A importância da sustentabilidade se tornou cada vez mais evidente nos últimos anos. As mudanças climáticas, a escassez de água potável, a perda de espécies, o acúmulo de lixo e a poluição do ar são sinais claros de que precisamos mudar nossos hábitos e rever o modo como interagimos com o planeta. Se continuarmos consumindo como se os recursos fossem infinitos, estaremos comprometendo não só o futuro das próximas gerações, mas também a estabilidade da nossa própria vida hoje.
+
+Mas a sustentabilidade não depende apenas de grandes políticas públicas ou ações empresariais. Ela começa com pequenas atitudes no dia a dia, como separar o lixo corretamente, economizar água e energia, evitar o uso de plásticos descartáveis, optar por meios de transporte menos poluentes, valorizar produtos locais e orgânicos e repensar o consumo excessivo. Atitudes como essas, quando feitas por muitas pessoas, geram impactos reais e positivos.
+
+Ser sustentável é entender que nossas escolhas têm consequências, e que cada gesto — por menor que pareça — faz parte de um movimento maior em direção a um mundo mais equilibrado, justo e saudável. É agir com empatia, respeito e visão de futuro. A sustentabilidade é, antes de tudo, um compromisso com a vida.</p>
+    </div>
+
+    <div id="consumo" class="content-section">
+      <h2>🛍️ Consumo Consciente</h2>
+      <p>O consumo consciente é uma forma de consumir produtos, serviços e recursos de maneira mais responsável, ética e sustentável. Ele envolve refletir sobre o que compramos, por que compramos, como utilizamos e como descartamos aquilo que consumimos. Mais do que apenas uma escolha individual, o consumo consciente é um comportamento que considera os impactos sociais, ambientais e econômicos das nossas ações no dia a dia.
+
+Vivemos em uma sociedade marcada pelo consumo em excesso. Somos incentivados o tempo todo a comprar mais, mesmo quando não precisamos. Produtos são lançados com frequência, e a publicidade nos faz acreditar que a felicidade está diretamente ligada ao que possuímos. Porém, esse modelo de consumo desenfreado tem consequências sérias: desperdício de recursos naturais, aumento da poluição, degradação ambiental, exploração de trabalhadores e acúmulo de lixo.
+
+Consumir de forma consciente é, portanto, repensar nossos hábitos de consumo. É fazer perguntas antes de comprar:
+“Eu realmente preciso disso?”,
+“Esse produto foi feito de forma justa e sustentável?”,
+“Qual será o impacto ambiental desse item?”,
+“Há uma versão reutilizável ou reciclável?”.
+Essas reflexões nos ajudam a fazer escolhas melhores, tanto para o planeta quanto para a sociedade.
+
+Além de reduzir impactos ambientais, o consumo consciente também valoriza o trabalho justo e estimula a economia local. Optar por marcas que respeitam os direitos humanos, compram de pequenos produtores, usam menos embalagens ou adotam práticas ecológicas é uma forma de incentivar um mercado mais justo e sustentável. Cada vez mais, consumidores estão exigindo transparência e responsabilidade das empresas, o que também ajuda a transformar o sistema.
+
+Outro aspecto importante do consumo consciente é o uso inteligente dos recursos. Isso inclui economizar água e energia, reaproveitar alimentos, dar preferência a produtos duráveis em vez dos descartáveis, e praticar o reuso, a doação e a reciclagem. Pequenas atitudes como levar uma ecobag para o mercado, trocar roupas com amigos ou consertar um aparelho em vez de jogar fora fazem parte dessa mudança de mentalidade.
+
+Vale lembrar que consumo consciente não significa deixar de consumir, mas sim consumir com responsabilidade, propósito e consciência. É entender que cada ato de consumo tem impacto e que podemos ser agentes de transformação através das nossas escolhas.
+
+Por fim, o consumo consciente também está ligado à educação e à cidadania. Ao refletir sobre o que consumimos, também nos tornamos mais conscientes sobre nossos direitos e deveres, contribuindo para uma sociedade mais equilibrada e sustentável. Promover esse tipo de consumo é cuidar do planeta, das pessoas e do nosso próprio futuro.</p>
+    </div>
+
+    <div id="residuos" class="content-section">
+      <h2>🗑️ Gestão de Resíduos</h2>
+      <p>Edite aqui o texto sobre gestão de resíduos...</p>
+    </div>
+
+    <div id="energia" class="content-section">
+      <h2>⚡ Energia Sustentável</h2>
+      <p>Edite aqui o texto sobre energia sustentável...</p>
+    </div>
+
+    <div id="mobilidade" class="content-section">
+      <h2>🚴 Mobilidade Sustentável</h2>
+      <p>Edite aqui o texto sobre mobilidade sustentável...</p>
+    </div>
+
+    <div id="alimentacao" class="content-section">
+      <h2>🥗 Alimentação Sustentável</h2>
+      <p>Edite aqui o texto sobre alimentação sustentável...</p>
+    </div>
+
+    <div id="preservacao" class="content-section">
+      <h2>🌳 Preservação Ambiental</h2>
+      <p>Edite aqui o texto sobre preservação ambiental...</p>
+    </div>
+
+    <div id="clima" class="content-section">
+      <h2>🌡️ Mudanças Climáticas</h2>
+      <p>Edite aqui o texto sobre mudanças climáticas...</p>
+    </div>
+
+    <div id="urbana" class="content-section">
+      <h2>🏙️ Sustentabilidade Urbana</h2>
+      <p>Edite aqui o texto sobre sustentabilidade urbana...</p>
+    </div>
+
+    <div id="digital" class="content-section">
+      <h2>💻 Sustentabilidade Digital</h2>
+      <p>Edite aqui o texto sobre sustentabilidade digital...</p>
+    </div>
+
+    <div id="justica" class="content-section">
+      <h2>⚖️ Justiça Social e Sustentabilidade</h2>
+      <p>Edite aqui o texto sobre justiça social e sustentabilidade...</p>
+    </div>
+
+    <div id="politicas" class="content-section">
+      <h2>📜 Políticas Públicas e Leis Ambientais</h2>
+      <p>Edite aqui o texto sobre políticas públicas e leis ambientais...</p>
+    </div>
+
+    <div id="educacao" class="content-section">
+      <h2>📚 Educação Ambiental</h2>
+      <p>Edite aqui o texto sobre educação ambiental...</p>
+    </div>
+  </main>
+
+  <script>
+    const buttons = document.querySelectorAll("nav button");
+    const sections = document.querySelectorAll(".content-section");
+
+    buttons.forEach(btn => {
+      btn.addEventListener("click", () => {
+        // trocar aba ativa
+        buttons.forEach(b => b.classList.remove("active"));
+        btn.classList.add("active");
+
+        // trocar conteúdo visível
+        const target = btn.getAttribute("data-target");
+        sections.forEach(sec => {
+          sec.classList.remove("active");
+          if (sec.id === target) sec.classList.add("active");
+        });
+      });
+    });
+  </script>
+
+</body>
+</html>
