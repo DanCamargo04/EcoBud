@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <title>EcoBud - Perguntas</title>
+    <style>
+        body {
+            background-color: #e6eef2;
+            font-family: Arial, sans-serif;
+            text-align: center;
+            padding: 20px;
+        }
+        h1 {
+            color: black;
+        }
+        .btn {
+            background-color: #80e299;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 10px;
+            cursor: pointer;
+            display: block;
+            width: 60%;
+            margin: 10px auto;
+            font-size: 18px;
+        }
+        .btn:hover {
+            background-color: #5fc87d;
+        }
+        .navegacao {
+            display: flex;
+            justify-content: space-between;
+            margin: 20px;
+        }
+        .feedback {
+            margin-top: 10px;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <h1>EC<span style="color: #80e299;">OBUD</span></h1>
+    <h2 id="tituloPergunta">Quiz</h2>
+    <p id="pergunta"></p>
+
+    <div id="opcoes"></div>
+
+    <div class="feedback" id="feedback"></div>
+
+    <div class="navegacao">
+        <button onclick="anterior()" class="btn">Anterior</button>
+        <span id="contador"></span>
+        <button onclick="proximo()" class="btn">Próximo</button>
+    </div>
+
+    <script>
+        const perguntas = [
+            {
+                pergunta: "Qual a principal fonte de energia renovável?",
+                opcoes: ["Energia solar", "Energia nuclear", "Gás natural", "Carvão mineral"],
+                resposta: 0
+            },
+            {
+                pergunta: "O que significa reciclar?",
+                opcoes: ["Reutilizar lixo sem tratar", "Transformar materiais usados em novos produtos", "Jogar lixo na rua", "Queimar resíduos"],
+                resposta: 1
+            },
+            {
+                pergunta: "Qual dessas atitudes ajuda o meio ambiente?",
+                opcoes: ["Desperdiçar água", "Jogar lixo no chão", "Economizar energia", "Usar carro para tudo"],
+                resposta: 2
+            },
+            {
+                pergunta: "Qual é o gás mais associado ao aquecimento global?",
+                opcoes: ["Oxigênio", "Gás Carbônico (CO₂)", "Nitrogênio", "Hidrogênio"],
+                resposta: 1
+            },
+            {
+                pergunta: "Qual material demora mais para se decompor na natureza?",
+                opcoes: ["Papel", "Vidro", "Casca de banana", "Madeira"],
+                resposta: 1
+            },
+            {
+                pergunta: "Qual dessas ações contribui para o consumo consciente?",
+                opcoes: ["Comprar sem necessidade", "Desperdiçar água", "Reutilizar embalagens", "Deixar luzes acesas"],
+                resposta: 2
+            }
+        ];
+
+        let indice = 0;
+        let acertos = 0;
+        let respostasSelecionadas = Array(perguntas.length).fill(null);
+
+        function carregarPergunta() {
+            const perguntaAtual = perguntas[indice];
+            document.getElementById("tituloPergunta").innerText = Pergunta ${indice + 1};
+            document.getElementById("pergunta").innerText = perguntaAtual.pergunta;
+            document.getElementById("contador").innerText = ${indice + 1}/${perguntas.length};
+
+            const container = document.getElementById("opcoes");
+            container.innerHTML = "";
+            document.getElementById("feedback").innerText = "";
+
+            perguntaAtual.opcoes.forEach((opcao, i) => {
+                const botao = document.createElement("button");
+                botao.innerText = opcao;
+                botao.className = "btn";
+                botao.onclick = () => verificarResposta(i);
+                container.appendChild(botao);
+            });
+
+            if (respostasSelecionadas[indice] !== null) {
+                mostrarFeedback(respostasSelecionadas[indice]);
+            }
+        }
+
+        function verificarResposta(selecionado) {
+            respostasSelecionadas[indice] = selecionado;
+            mostrarFeedback(selecionado);
+        }
+
+        function mostrarFeedback(selecionado) {
+            const correta = perguntas[indice].resposta;
+            if (selecionado === correta) {
+                document.getElementById("feedback").innerText = "✅ Correto!";
+            } else {
+                const respostaCorreta = perguntas[indice].opcoes[correta];
+                document.getElementById("feedback").innerText = ❌ Errado! Resposta correta: ${respostaCorreta};
+            }
+        }
+
+        function proximo() {
+            if (indice < perguntas.length - 1) {
+                indice++;
+                carregarPergunta();
+            } else {
+                const acertosFinais = respostasSelecionadas.filter(
+                    (resposta, i) => resposta === perguntas[i].resposta
+                ).length;
+
+                alert(Quiz finalizado! Você acertou ${acertosFinais} de ${perguntas.length}.);
+                window.location.href = "quiz.html";
+            }
+        }
+
+        function anterior() {
+            if (indice > 0) {
+                indice--;
+                carregarPergunta();
+            } else {
+                window.location.href = "quiz.html";
+            }
+        }
+
+        window.onload = carregarPergunta;
+    </script>
+</body>
+</html>
