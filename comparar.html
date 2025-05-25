@@ -1,0 +1,300 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <title>EcoBud - Comparar</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      background-color: #e6eef2;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      min-height: 100vh;
+    }
+
+    header {
+      width: 100%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      position: relative;
+      padding: 40px 0 20px;
+      z-index: 1;
+    }
+
+    .logo {
+      font-size: 80px;
+      font-weight: bold;
+      color: white;
+      text-shadow: 3px 3px 15px rgba(0, 0, 0, 0.3);
+    }
+
+    .logo span {
+      color: #4ce191;
+    }
+
+    .left-icons {
+      position: absolute;
+      top: 40px;
+      left: 40px;
+      display: flex;
+      gap: 20px;
+    }
+
+    .home-icon, .back-icon {
+      width: 50px;
+      height: 50px;
+      cursor: pointer;
+    }
+
+    .menu-icon {
+      position: absolute;
+      top: 40px;
+      right: 40px;
+      width: 150px;
+      height: 150px;
+      cursor: pointer;
+    }
+
+    .dropdown {
+      display: none;
+      position: absolute;
+      top: 100px;
+      right: 40px;
+      background-color: white;
+      border: 1px solid #ccc;
+      border-radius: 12px;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+      padding: 10px 0;
+      width: 180px;
+      z-index: 999;
+    }
+
+    .dropdown a {
+      display: block;
+      padding: 12px 20px;
+      text-decoration: none;
+      color: #333;
+      font-weight: 500;
+      transition: background 0.2s;
+    }
+
+    .dropdown a:hover {
+      background-color: #f0f0f0;
+    }
+
+    main {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: flex-start;
+      width: 100%;
+    }
+
+    h1 {
+      margin-top: 20px;
+      font-size: 48px;
+      color: #397065;
+    }
+
+    .container {
+      display: flex;
+      justify-content: center;
+      gap: 60px;
+      margin-top: 40px;
+      flex-wrap: wrap;
+    }
+
+    .box {
+      background-color: white;
+      padding: 20px;
+      border-radius: 20px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+      width: 280px;
+    }
+
+    .box h3 {
+      color: #397065;
+      margin-bottom: 10px;
+      font-size: 20px;
+    }
+
+    .box label {
+      display: block;
+      margin: 8px 0 4px;
+      font-weight: bold;
+    }
+
+    .box input {
+      width: 100%;
+      padding: 8px;
+      border-radius: 8px;
+      border: none;
+      background-color: #f0f0f0;
+    }
+
+    .seta {
+      font-size: 50px;
+      color: #4ce191;
+      align-self: center;
+      margin-top: 100px;
+    }
+
+    .resultado {
+      margin-top: 40px;
+      background-color: white;
+      padding: 20px 30px;
+      border-radius: 20px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+      max-width: 700px;
+      text-align: center;
+    }
+
+    .resultado h3 {
+      margin-bottom: 15px;
+      color: #397065;
+      font-size: 22px;
+    }
+
+    .resultado ul {
+      list-style: none;
+      padding: 0;
+      text-align: left;
+    }
+
+    .resultado li {
+      margin-bottom: 10px;
+      position: relative;
+      padding-left: 24px;
+    }
+
+    .resultado li::before {
+      content: "●";
+      position: absolute;
+      left: 0;
+      color: #ccc;
+    }
+
+    @media (max-width: 768px) {
+      .logo {
+        font-size: 60px;
+      }
+
+      .left-icons {
+        top: 20px;
+        left: 20px;
+        gap: 15px;
+      }
+
+      .home-icon, .back-icon {
+        width: 40px;
+        height: 40px;
+      }
+
+      .menu-icon {
+        top: 20px;
+        width: 100px;
+        height: 100px;
+      }
+
+      .container {
+        flex-direction: column;
+        align-items: center;
+        gap: 20px;
+      }
+
+      .seta {
+        transform: rotate(90deg);
+        margin: 20px 0;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <div class="left-icons">
+      <a href="home.html"><img src="imagens/home.png" alt="Home" class="home-icon"></a>
+      <a href="javascript:history.back()"><img src="imagens/voltar.png" alt="Voltar" class="back-icon"></a>
+    </div>
+    <div class="logo">ECO<span>BUD</span></div>
+    <img src="imagens/opcoes.png" alt="Menu" class="menu-icon" id="menuIcon">
+    <div class="dropdown" id="dropdownMenu">
+      <a href="#">Perfil</a>
+      <a href="#">Configurações</a>
+      <a href="#" onclick="logout()">Sair</a>
+    </div>
+  </header>
+
+  <main>
+    <h1>Comparativo</h1>
+
+    <div class="container">
+      <div class="box">
+        <h3 style="color:#66bfa4;">Antes</h3>
+        <label>Data:</label>
+        <input type="text">
+        <label>Energia gasta:</label>
+        <input type="text">
+        <label>Água gasta:</label>
+        <input type="text">
+        <label>Plástico reciclado:</label>
+        <input type="text">
+      </div>
+
+      <div class="seta">➔</div>
+
+      <div class="box">
+        <h3 style="color:#66bfa4;">Depois</h3>
+        <label>Data:</label>
+        <input type="text">
+        <label>Energia gasta:</label>
+        <input type="text">
+        <label>Água gasta:</label>
+        <input type="text">
+        <label>Plástico reciclado:</label>
+        <input type="text">
+      </div>
+    </div>
+
+    <div class="resultado">
+      <h3>Comparando o mês ? com o mês ?, você:</h3>
+      <ul>
+        <li>Economizou ? de energia</li>
+        <li>Economizou ? de água</li>
+        <li>Reciclou mais/menos plástico</li>
+      </ul>
+    </div>
+
+  </main>
+
+  <script>
+    const menuIcon = document.getElementById("menuIcon");
+    const dropdown = document.getElementById("dropdownMenu");
+
+    menuIcon.addEventListener("click", () => {
+      dropdown.style.display = dropdown.style.display === "block" ? "none" : "block";
+    });
+
+    document.addEventListener("click", function (e) {
+      if (!menuIcon.contains(e.target) && !dropdown.contains(e.target)) {
+        dropdown.style.display = "none";
+      }
+    });
+
+    function logout() {
+      localStorage.removeItem("usuario");
+      window.location.href = "index.html";
+    }
+  </script>
+
+</body>
+</html>
