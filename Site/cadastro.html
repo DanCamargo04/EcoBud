@@ -112,10 +112,17 @@
       background-color: #3dd281;
     }
 
-    .erro {
-      color: red;
+    .mensagem {
       font-weight: bold;
       margin-top: 10px;
+    }
+
+    .erro {
+      color: red;
+    }
+
+    .sucesso {
+      color: green;
     }
 
     @media (max-width: 600px) {
@@ -171,11 +178,18 @@
         <button type="submit" class="submit">Cadastrar-se</button>
       </div>
 
-      <div id="mensagemErro" class="erro"></div>
+      <div id="mensagem" class="mensagem"></div>
     </form>
   </div>
 
+  <!-- Supabase -->
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js"></script>
   <script>
+    const supabase = supabase.createClient(
+      'https://bllbgsgqcxgsinfzvgdu.supabase.co', // ⬅️ seu link do Supabase
+      'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImJsbGJnc2dxY3hnc2luZnp2Z2R1Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3NDgyMTc2NzUsImV4cCI6MjA2Mzc5MzY3NX0.rgdlB2ia-n3cXIBsC-AoBe37BNiF3i3RtlV9pgcNAks'             // ⬅️ sua chave pública
+    );
+
     document.getElementById("formCadastro").addEventListener("submit", async function(e) {
       e.preventDefault();
 
@@ -183,41 +197,38 @@
       const email = document.getElementById("email").value.trim();
       const senha = document.getElementById("senha").value.trim();
       const confirmar = document.getElementById("confirmar").value.trim();
-      const erro = document.getElementById("mensagemErro");
+      const mensagem = document.getElementById("mensagem");
 
-      erro.textContent = "";
+      mensagem.textContent = "";
+      mensagem.className = "mensagem";
 
       if (!nome || !email || !senha || !confirmar) {
-        erro.textContent = "Preencha todos os campos corretamente.";
+        mensagem.textContent = "Preencha todos os campos corretamente.";
+        mensagem.classList.add("erro");
         return;
       }
 
       if (senha !== confirmar) {
-        erro.textContent = "As senhas não coincidem.";
+        mensagem.textContent = "As senhas não coincidem.";
+        mensagem.classList.add("erro");
         return;
       }
 
-      const formData = new FormData();
-      formData.append('email', email);
-      formData.append('senha', senha);
+      const { data, error } = await supabase
+        .from('usuario')
+        .insert([{ nome: nome, email: email, senha: senha }]);
 
-      try {
-        const response = await fetch('http://127.0.0.1:5000/register', {
-          method: 'POST',
-          body: formData,
-          credentials: 'include'
-        });
+      if (error) {
+        mensagem.textContent = 'Erro: ' + error.message;
+        mensagem.classList.add("erro");
+      } else {
+        mensagem.textContent = "Cadastro feito com sucesso!";
+        mensagem.classList.add("sucesso");
 
-        const texto = await response.text();
-
-        if (response.ok) {
-          alert("Cadastro realizado com sucesso!");
+        // Opcional: esperar 2 segundos e redirecionar
+        setTimeout(() => {
           window.location.href = "index.html";
-        } else {
-          erro.textContent = texto;
-        }
-      } catch (err) {
-        erro.textContent = "Erro ao conectar com o servidor.";
+        }, 2000);
       }
     });
   </script>
