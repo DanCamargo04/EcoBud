@@ -26,7 +26,6 @@
       align-items: center;
       position: relative;
       padding: 40px 0 20px;
-      z-index: 1;
     }
 
     .logo {
@@ -63,39 +62,11 @@
       cursor: pointer;
     }
 
-    .dropdown {
-      display: none;
-      position: absolute;
-      top: 100px;
-      right: 40px;
-      background-color: white;
-      border: 1px solid #ccc;
-      border-radius: 12px;
-      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
-      padding: 10px 0;
-      width: 180px;
-      z-index: 999;
-    }
-
-    .dropdown a {
-      display: block;
-      padding: 12px 20px;
-      text-decoration: none;
-      color: #333;
-      font-weight: 500;
-      transition: background 0.2s;
-    }
-
-    .dropdown a:hover {
-      background-color: #f0f0f0;
-    }
-
     main {
       flex: 1;
       display: flex;
       flex-direction: column;
       align-items: center;
-      justify-content: flex-start;
       width: 100%;
     }
 
@@ -133,12 +104,12 @@
       font-weight: bold;
     }
 
-    .box input {
+    .valor {
       width: 100%;
       padding: 8px;
       border-radius: 8px;
-      border: none;
       background-color: #f0f0f0;
+      font-size: 16px;
     }
 
     .seta {
@@ -227,11 +198,6 @@
     </div>
     <div class="logo">ECO<span>BUD</span></div>
     <img src="imagens/opcoes.png" alt="Menu" class="menu-icon" id="menuIcon">
-    <div class="dropdown" id="dropdownMenu">
-      <a href="#">Perfil</a>
-      <a href="#">Configurações</a>
-      <a href="#" onclick="logout()">Sair</a>
-    </div>
   </header>
 
   <main>
@@ -241,13 +207,13 @@
       <div class="box">
         <h3 style="color:#66bfa4;">Antes</h3>
         <label>Data:</label>
-        <input type="text">
+        <div class="valor">03/2024</div>
         <label>Energia gasta:</label>
-        <input type="text">
+        <div class="valor">249 kWh</div>
         <label>Água gasta:</label>
-        <input type="text">
+        <div class="valor">5783 litros</div>
         <label>Plástico reciclado:</label>
-        <input type="text">
+        <div class="valor">1 kg</div>
       </div>
 
       <div class="seta">➔</div>
@@ -255,46 +221,26 @@
       <div class="box">
         <h3 style="color:#66bfa4;">Depois</h3>
         <label>Data:</label>
-        <input type="text">
+        <div class="valor">04/2024</div>
         <label>Energia gasta:</label>
-        <input type="text">
+        <div class="valor">197 kWh</div>
         <label>Água gasta:</label>
-        <input type="text">
+        <div class="valor">5129 litros</div>
         <label>Plástico reciclado:</label>
-        <input type="text">
+        <div class="valor">3 kg</div>
       </div>
     </div>
 
     <div class="resultado">
-      <h3>Comparando o mês ? com o mês ?, você:</h3>
+      <h3>Comparando o mês 03 com o mês 04, você:</h3>
       <ul>
-        <li>Economizou ? de energia</li>
-        <li>Economizou ? de água</li>
-        <li>Reciclou mais/menos plástico</li>
+        <li>Economizou 52 kWh de energia</li>
+        <li>Economizou 654 litros de água</li>
+        <li>Reciclou mais 2 kg de plástico</li>
       </ul>
     </div>
 
   </main>
-
-  <script>
-    const menuIcon = document.getElementById("menuIcon");
-    const dropdown = document.getElementById("dropdownMenu");
-
-    menuIcon.addEventListener("click", () => {
-      dropdown.style.display = dropdown.style.display === "block" ? "none" : "block";
-    });
-
-    document.addEventListener("click", function (e) {
-      if (!menuIcon.contains(e.target) && !dropdown.contains(e.target)) {
-        dropdown.style.display = "none";
-      }
-    });
-
-    function logout() {
-      localStorage.removeItem("usuario");
-      window.location.href = "index.html";
-    }
-  </script>
 
 </body>
 </html>

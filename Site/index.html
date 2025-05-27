@@ -157,51 +157,28 @@
     <div id="mensagemErro" class="erro"></div>
   </div>
 
-  <!-- Importando Supabase -->
-  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js"></script>
   <script>
-    const supabase = supabase.createClient(
-      'https://bllbgsgqcxgsinfzvgdu.supabase.co', // 🔗 Substitua pelo seu projeto
-      'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImJsbGJnc2dxY3hnc2luZnp2Z2R1Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3NDgyMTc2NzUsImV4cCI6MjA2Mzc5MzY3NX0.rgdlB2ia-n3cXIBsC-AoBe37BNiF3i3RtlV9pgcNAks'                // 🔑 Coloque sua chave pública
-    );
-
-    document.getElementById("formLogin").addEventListener("submit", async function(e) {
+    document.getElementById("formLogin").addEventListener("submit", function(e) {
       e.preventDefault();
 
       const email = document.getElementById("email").value.trim();
       const senha = document.getElementById("senha").value.trim();
       const erro = document.getElementById("mensagemErro");
 
-      erro.textContent = "";
-
       if (!email || !senha) {
         erro.textContent = "Preencha todos os campos corretamente.";
         return;
       }
 
-      // Login admin manual
       if (email === "admin@ecobud.com" && senha === "admin") {
         localStorage.setItem("usuario", email);
-        window.location.href = "home.html";
-        return;
-      }
-
-      // Login via banco Supabase
-      const { data, error } = await supabase
-        .from('usuario')
-        .select('*')
-        .eq('email', email)
-        .eq('senha', senha)
-        .single();
-
-      if (error || !data) {
-        erro.textContent = "Email ou senha inválidos.";
+        window.location.href = "home.html"; // ou home.html, se for esse o nome do arquivo de destino
       } else {
-        localStorage.setItem("usuario", email);
-        window.location.href = "home.html";
+        erro.textContent = "E-mail ou senha inválidos.";
       }
     });
   </script>
 
 </body>
 </html>
+

@@ -209,16 +209,20 @@
   <main>
     <form id="formRegistro">
       <label>
+        Data do registro (MM/AAAA):
+        <input type="text" id="data" placeholder="MM/AAAA" pattern="(0[1-9]|1[0-2])\/[0-9]{4}" required>
+      </label>
+      <label>
         Quantidade de energia gasta no mês (kWh):
-        <input type="number" placeholder="kWh" required>
+        <input type="number" id="energia" placeholder="kWh" required>
       </label>
       <label>
         Quantidade de água gasta no mês (litros):
-        <input type="number" placeholder="Litros" required>
+        <input type="number" id="agua" placeholder="Litros" required>
       </label>
       <label>
         Quantidade de plástico reciclado no mês:
-        <input type="number" placeholder="Kg" required>
+        <input type="number" id="plastico" placeholder="Kg" required>
       </label>
 
       <div class="botoes-container">
@@ -254,7 +258,12 @@
 
     form.addEventListener("submit", function(e) {
       e.preventDefault();
+
+      // Mostrar mensagem de sucesso
       mensagem.textContent = "Dados registrados com sucesso!";
+
+      // Limpar os campos do formulário
+      form.reset();
     });
   </script>
 
